@@ -55,6 +55,19 @@ class BlinkStick
     Color::RGB.new(result[1].ord, result[2].ord, result[3].ord)
   end
 
+  def fade_to(end_color, frames=20, sleep=0.05)
+    start_color = self.color()
+
+    opacity = 100
+    frame = opacity/frames
+    for i in 0..frames
+      opacity -= frame
+      self.color = start_color.mix_with(end_color, opacity)
+      sleep sleep
+    end
+
+  end
+
   def off
     self.color = Color::RGB.new(0, 0, 0)
   end
