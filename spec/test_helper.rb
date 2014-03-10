@@ -3,7 +3,7 @@ require 'rspec'
 require 'test_contants'
 
 # Model
-require_relative '../src/project'
+require_relative '../src/model/project'
 
 # Logic
 require_relative '../src/cc_parser'

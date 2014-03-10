@@ -1,4 +1,4 @@
-require_relative 'project'
+require_relative 'model/project'
 
 class CCPixel
 

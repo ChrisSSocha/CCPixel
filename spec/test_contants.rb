@@ -1,4 +1,4 @@
-require_relative "../src/project"
+require_relative "../src/model/project"
 
 module TestConstants
 
