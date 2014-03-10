@@ -28,7 +28,7 @@ class CCInput
   private
 
     def validate(document)
-      schema = Nokogiri::XML::Schema(File.read("#{File.expand_path("..", __FILE__)}/cctray_schema.xsd"))
+      schema = Nokogiri::XML::Schema(File.read("#{File.expand_path("..", __FILE__)}/resources/cctray_schema.xsd"))
 
       xml_document = Nokogiri::XML(document)
       errors = schema.validate(xml_document)
