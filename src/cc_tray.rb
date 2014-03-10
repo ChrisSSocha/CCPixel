@@ -1,0 +1,2 @@
+class CCTray
+end
