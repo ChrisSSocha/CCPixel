@@ -2,12 +2,12 @@ require 'nokogiri'
 
 class CCTray
 
-  def initialize(ccFetch)
-    @ccFetch = ccFetch
+  def initialize(ccInput)
+    @ccInput = ccInput
   end
 
   def getProjects
-    xml = @ccFetch.fetch()
+    xml = @ccInput.fetch()
     parse(xml)
   end
 

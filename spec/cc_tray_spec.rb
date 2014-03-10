@@ -3,13 +3,13 @@ include Constants
 
 describe '.getProjects' do
 
-  let(:ccFetcher) {double(CCFetch)}
+  let(:ccInput) {double(CCInput)}
 
   context 'when there are no projects' do
 
     before(:each) do
-      allow(ccFetcher).to receive(:fetch).and_return(XML::NoProjects)
-      @ccTray = CCTray.new(ccFetcher)
+      allow(ccInput).to receive(:fetch).and_return(XML::NoProjects)
+      @ccTray = CCTray.new(ccInput)
     end
 
     it 'should return empty array' do
@@ -21,8 +21,8 @@ describe '.getProjects' do
   context 'when there is one project' do
 
     before(:each) do
-      allow(ccFetcher).to receive(:fetch).and_return(XML::OneProject)
-      @ccTray = CCTray.new(ccFetcher)
+      allow(ccInput).to receive(:fetch).and_return(XML::OneProject)
+      @ccTray = CCTray.new(ccInput)
     end
 
     it 'should return single project' do
@@ -35,8 +35,8 @@ describe '.getProjects' do
   context 'when there are multiple project' do
 
     before(:each) do
-      allow(ccFetcher).to receive(:fetch).and_return(XML::MultipleProjects)
-      @ccTray = CCTray.new(ccFetcher)
+      allow(ccInput).to receive(:fetch).and_return(XML::MultipleProjects)
+      @ccTray = CCTray.new(ccInput)
     end
 
     it 'should return single project' do

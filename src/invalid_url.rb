@@ -1,0 +1,2 @@
+class InvalidUrl < StandardError
+end

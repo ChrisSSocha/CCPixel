@@ -1,0 +1,2 @@
+class InvalidCCTrayFormat < StandardError
+end
