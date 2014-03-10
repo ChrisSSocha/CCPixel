@@ -35,6 +35,14 @@ module TestConstants
                                           ::Project::Constants::Activity::BUILDING,
                                           ::Project::Constants::LastBuildStatus::SUCCESS)
 
+    FailedProject = buildTest(Name,
+                              ::Project::Constants::Activity::SLEEPING,
+                              ::Project::Constants::LastBuildStatus::FAILURE)
+
+    FailedProjectBuilding = buildTest(Name,
+                                      ::Project::Constants::Activity::BUILDING,
+                                      ::Project::Constants::LastBuildStatus::FAILURE)
+
   end
 
   module XML

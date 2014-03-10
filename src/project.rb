@@ -6,7 +6,7 @@ class Project
     module Activity
       SLEEPING = "Sleeping"
       BUILDING = "Building"
-      CHECKING_MODIFICATIONS = "CheckingModifications "
+      CHECKING_MODIFICATIONS = "CheckingModifications"
     end
 
     module LastBuildStatus

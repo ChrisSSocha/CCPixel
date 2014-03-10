@@ -12,7 +12,6 @@ class CCPixel
     failed = false;
 
     projects.each{|project|
-
       if project.isBuilding?
         building = true
       end
@@ -20,7 +19,6 @@ class CCPixel
       unless project.isSuccessful?
         failed = true
       end
-
     }
 
     if failed

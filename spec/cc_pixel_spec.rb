@@ -30,4 +30,59 @@ describe '.process' do
 
   end
 
+  context 'when all projects are failed' do
+
+    let(:projects) {[FailedProject, FailedProject]}
+
+    it 'should call failure method' do
+      expect(@ccOutput).to receive(:failed)
+      @ccPixel.process(projects)
+    end
+
+    context 'and project is building' do
+
+      let(:projects) {[FailedProject, FailedProjectBuilding]}
+
+      it 'should call failure_building' do
+        expect(@ccOutput).to receive(:failed_building)
+        @ccPixel.process(projects)
+      end
+
+    end
+
+  end
+
+  context 'when some tests have passed and some have failed' do
+
+    let(:projects) {[SuccessfulProject, FailedProject]}
+
+    it 'should call failure method' do
+      expect(@ccOutput).to receive(:failed)
+      @ccPixel.process(projects)
+    end
+
+    context 'and a successful project is building' do
+
+      let(:projects) {[SuccessfulProjectBuilding, FailedProject]}
+
+      it 'should call failyre_building' do
+        expect(@ccOutput).to receive(:failed_building)
+        @ccPixel.process(projects)
+      end
+
+    end
+
+    context 'and a failed project is building' do
+
+      let(:projects) {[SuccessfulProject, FailedProjectBuilding]}
+
+      it 'should call failyre_building' do
+        expect(@ccOutput).to receive(:failed_building)
+        @ccPixel.process(projects)
+      end
+
+    end
+
+  end
+
 end
