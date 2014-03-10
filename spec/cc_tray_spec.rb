@@ -1,5 +1,5 @@
 require 'test_helper'
-include Constants
+include TestConstants
 
 describe '.getProjects' do
 
@@ -9,11 +9,11 @@ describe '.getProjects' do
 
     before(:each) do
       allow(ccInput).to receive(:fetch).and_return(XML::NoProjects)
-      @ccTray = CCTray.new(ccInput)
+      @ccParser = CCParser.new(ccInput)
     end
 
     it 'should return empty array' do
-      expect(@ccTray.getProjects()).to be_empty
+      expect(@ccParser.getProjects()).to be_empty
     end
 
   end
@@ -22,12 +22,12 @@ describe '.getProjects' do
 
     before(:each) do
       allow(ccInput).to receive(:fetch).and_return(XML::OneProject)
-      @ccTray = CCTray.new(ccInput)
+      @ccParser = CCParser.new(ccInput)
     end
 
     it 'should return single project' do
-      expect(@ccTray.getProjects.length).to eq(1)
-      expect(@ccTray.getProjects[0]).to eq(Constants::Project::SampleProject1)
+      expect(@ccParser.getProjects.length).to eq(1)
+      expect(@ccParser.getProjects[0]).to eq(TestConstants::Project::SampleProject1)
     end
 
   end
@@ -36,13 +36,13 @@ describe '.getProjects' do
 
     before(:each) do
       allow(ccInput).to receive(:fetch).and_return(XML::MultipleProjects)
-      @ccTray = CCTray.new(ccInput)
+      @ccParser = CCParser.new(ccInput)
     end
 
     it 'should return single project' do
-      expect(@ccTray.getProjects.length).to eq(2)
-      expect(@ccTray.getProjects[0]).to eq(Constants::Project::SampleProject1)
-      expect(@ccTray.getProjects[1]).to eq(Constants::Project::SampleProject2)
+      expect(@ccParser.getProjects.length).to eq(2)
+      expect(@ccParser.getProjects[0]).to eq(TestConstants::Project::SampleProject1)
+      expect(@ccParser.getProjects[1]).to eq(TestConstants::Project::SampleProject2)
     end
 
   end

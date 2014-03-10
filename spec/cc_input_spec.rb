@@ -24,7 +24,7 @@ describe '.fetch' do
   end
 
   it 'should return xml string if valid url' do
-    document = StringIO.new(Constants::XML::OneProject)
+    document = StringIO.new(TestConstants::XML::OneProject)
     allow(@ccInput).to receive(:open).and_return(document)
 
     expect(@ccInput.fetch(valid_url)).to eq(document)

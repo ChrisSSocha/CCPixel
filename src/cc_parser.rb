@@ -1,6 +1,6 @@
 require 'nokogiri'
 
-class CCTray
+class CCParser
 
   def initialize(ccInput)
     @ccInput = ccInput

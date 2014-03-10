@@ -2,6 +2,22 @@ class Project
 
   attr_reader :name, :activity, :lastBuildStatus, :lastBuildLabel, :lastBuildTime, :nextBuildTime, :webUrl
 
+  module Constants
+    module Activity
+      SLEEPING = "Sleeping"
+      BUILDING = "Building"
+      CHECKING_MODIFICATIONS = "CheckingModifications "
+    end
+
+    module LastBuildStatus
+      PENDING = "Pending"
+      SUCCESS = "Success"
+      FAILURE = "Failure"
+      EXCEPTION = "Exception"
+      UNKNOWN = "Unknown"
+    end
+  end
+
   class Builder
 
     def initialize(name, activity)
@@ -60,6 +76,14 @@ class Project
     hash = 73 * hash + @nextBuildTime
     hash = 73 * hash + @webUrl
     hash
+  end
+
+  def isBuilding?
+    return activity == Constants::Activity::BUILDING
+  end
+
+  def isSuccessful?
+    return lastBuildStatus == Constants::LastBuildStatus::SUCCESS
   end
 
   private

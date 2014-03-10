@@ -1,5 +1,5 @@
 require 'test_helper'
-include Constants::Project
+include TestConstants::Project
 
 describe 'Builder' do
 

@@ -1,31 +1,40 @@
 require_relative "../src/project"
 
-module Constants
+module TestConstants
 
   module Project
     Name = "HelloWorld"
-    Activity = "Sleeping"
-    LastBuildStatus = "Success"
+    Name2 = "GoodbyeWorld"
+
+    Activity = ::Project::Constants::Activity::SLEEPING
+    LastBuildStatus = ::Project::Constants::LastBuildStatus::SUCCESS
     LastBuildLabel = "13"
     LastBuildTime = "2005-09-15T17:33:07.6447696+01:00"
     NextBuildTime = "2005-10-04T14:31:51.7799600+01:00"
     WebURL = "http://example/"
 
-    Name2 = "GoodbyeWorld"
+    def buildTest(name = Name, activity = Activity, lastBuildStatus = LastBuildStatus)
+      ::Project::Builder.new(name, activity)
+      .lastBuildStatus(lastBuildStatus)
+      .lastBuildLabel(LastBuildLabel)
+      .lastBuildTime(LastBuildTime)
+      .nextBuildTime(NextBuildTime)
+      .webUrl(WebURL).build()
+    end
 
-    SampleProject1 = ::Project::Builder.new(Name, Activity)
-    .lastBuildStatus(LastBuildStatus)
-    .lastBuildLabel(LastBuildLabel)
-    .lastBuildTime(LastBuildTime)
-    .nextBuildTime(NextBuildTime)
-    .webUrl(WebURL).build()
+    module_function :buildTest
 
-    SampleProject2 = ::Project::Builder.new(Name2, Activity)
-    .lastBuildStatus(LastBuildStatus)
-    .lastBuildLabel(LastBuildLabel)
-    .lastBuildTime(LastBuildTime)
-    .nextBuildTime(NextBuildTime)
-    .webUrl(WebURL).build()
+    SampleProject1 = buildTest(Name)
+    SampleProject2 = buildTest(Name2)
+
+    SuccessfulProject = buildTest(Name,
+                                  ::Project::Constants::Activity::SLEEPING,
+                                  ::Project::Constants::LastBuildStatus::SUCCESS)
+
+    SuccessfulProjectBuilding = buildTest(Name,
+                                          ::Project::Constants::Activity::BUILDING,
+                                          ::Project::Constants::LastBuildStatus::SUCCESS)
+
   end
 
   module XML

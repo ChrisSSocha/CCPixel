@@ -6,10 +6,6 @@ require_relative 'exceptions/invalid_url'
 
 class CCInput
 
-  #def initialize(openUri)
-  #  @openUri = openUri
-  #end
-
   def fetch(url)
 
     raise InvalidUrl unless url =~ URI::regexp
