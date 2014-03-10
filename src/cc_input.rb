@@ -1,8 +1,8 @@
 require 'open-uri'
 
-require_relative 'resource_not_found_error'
-require_relative 'invalid_cc_tray_format'
-require_relative 'invalid_url'
+require_relative 'exceptions/invalid_cc_tray_format'
+require_relative 'exceptions/resource_not_found_error'
+require_relative 'exceptions/invalid_url'
 
 class CCInput
 
