@@ -23,9 +23,9 @@ class CCPixel
 
     if failed
       if building
-        @output.failed_building()
+        @output.fail_building()
       else
-        @output.failed()
+        @output.fail()
       end
     else
       if building

@@ -24,4 +24,8 @@ class CCOutput
     @blinkStick.color = Color::RGB::Yellow
   end
 
+  def off
+    @blinkStick.off
+  end
+
 end

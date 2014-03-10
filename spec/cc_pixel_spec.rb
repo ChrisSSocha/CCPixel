@@ -35,7 +35,7 @@ describe '.process' do
     let(:projects) {[FailedProject, FailedProject]}
 
     it 'should call failure method' do
-      expect(@ccOutput).to receive(:failed)
+      expect(@ccOutput).to receive(:fail)
       @ccPixel.process(projects)
     end
 
@@ -44,7 +44,7 @@ describe '.process' do
       let(:projects) {[FailedProject, FailedProjectBuilding]}
 
       it 'should call failure_building' do
-        expect(@ccOutput).to receive(:failed_building)
+        expect(@ccOutput).to receive(:fail_building)
         @ccPixel.process(projects)
       end
 
@@ -57,7 +57,7 @@ describe '.process' do
     let(:projects) {[SuccessfulProject, FailedProject]}
 
     it 'should call failure method' do
-      expect(@ccOutput).to receive(:failed)
+      expect(@ccOutput).to receive(:fail)
       @ccPixel.process(projects)
     end
 
@@ -65,8 +65,8 @@ describe '.process' do
 
       let(:projects) {[SuccessfulProjectBuilding, FailedProject]}
 
-      it 'should call failyre_building' do
-        expect(@ccOutput).to receive(:failed_building)
+      it 'should call failure_building' do
+        expect(@ccOutput).to receive(:fail_building)
         @ccPixel.process(projects)
       end
 
@@ -76,8 +76,8 @@ describe '.process' do
 
       let(:projects) {[SuccessfulProject, FailedProjectBuilding]}
 
-      it 'should call failyre_building' do
-        expect(@ccOutput).to receive(:failed_building)
+      it 'should call failure_building' do
+        expect(@ccOutput).to receive(:fail_building)
         @ccPixel.process(projects)
       end
 

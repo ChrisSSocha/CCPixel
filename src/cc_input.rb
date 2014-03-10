@@ -6,12 +6,14 @@ require_relative 'exceptions/invalid_url'
 
 class CCInput
 
-  def fetch(url)
-
+  def initialize(url)
     raise InvalidUrl unless url =~ URI::regexp
+    @url = url
+  end
 
+  def fetch()
     begin
-      document = open(url)
+      document = open(@url).read()
       validate(document)
     rescue OpenURI::HTTPError => e
       raise ResourceNotFoundError, ["Error trying to fetch resource", e]
@@ -26,7 +28,7 @@ class CCInput
     def validate(document)
       schema = Nokogiri::XML::Schema(File.read("#{File.expand_path("..", __FILE__)}/resources/cctray_schema.xsd"))
 
-      xml_document = Nokogiri::XML(document)
+      xml_document = Nokogiri::XML::Document.parse(document)
       errors = schema.validate(xml_document)
 
       raise InvalidCCTrayFormat unless errors.empty?
