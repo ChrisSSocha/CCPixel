@@ -16,7 +16,7 @@ class CCInput
     begin
       document = getDocument()
       validate!(document)
-    rescue OpenURI::HTTPError => e
+    rescue OpenURI::HTTPError, Errno::ECONNREFUSED => e
       raise ResourceNotFoundError, ["Error trying to fetch resource", e]
     end
 
