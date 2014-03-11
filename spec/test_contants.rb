@@ -1,3 +1,5 @@
+require 'yaml'
+
 require_relative "../src/model/project"
 
 module TestConstants
@@ -79,6 +81,18 @@ module TestConstants
                         webUrl=\"#{Project::WebURL}\"/>
                       </Projects>
                      }
+  end
+
+  module YAML
+
+    ValidYAML = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"10"})
+
+    InvalidUrl = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"10"})
+    NoUrl = ::YAML.dump({"sleep"=>"10"})
+
+    InvalidSleep = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"Not a number"})
+    NoSleep = ::YAML.dump({"url"=>"http:://localhost:4567"})
+
   end
 
 end

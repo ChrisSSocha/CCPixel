@@ -6,7 +6,7 @@ describe 'CCInput' do
   let(:invalid_url) {"invalid"}
 
   it 'constructor should throw exception if invalid url' do
-    expect{CCInput.new(invalid_url)}.to raise_error(InvalidUrl)
+    expect{CCInput.new(invalid_url)}.to raise_error(InvalidUrlError)
   end
 
   describe '.fetch' do
@@ -15,13 +15,13 @@ describe 'CCInput' do
 
     it 'should throw exception if url does not exist' do
       ccInput = CCInput.new(valid_url)
-      expect{ccInput.fetch()}.to raise_error(InvalidCCTrayFormat)
+      expect{ccInput.fetch()}.to raise_error(InvalidCCTrayFormatError)
     end
 
     it 'should throw exception if document is not correct format' do
       ccInput = CCInput.new(valid_url)
       allow(ccInput).to receive(:open).and_return(StringIO.new)
-      expect{ccInput.fetch()}.to raise_error(InvalidCCTrayFormat)
+      expect{ccInput.fetch()}.to raise_error(InvalidCCTrayFormatError)
     end
 
     it 'should return xml string' do

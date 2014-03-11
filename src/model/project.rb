@@ -79,11 +79,11 @@ class Project
   end
 
   def isBuilding?
-    return activity == Constants::Activity::BUILDING
+    activity == Constants::Activity::BUILDING
   end
 
   def isSuccessful?
-    return lastBuildStatus == Constants::LastBuildStatus::SUCCESS
+    lastBuildStatus == Constants::LastBuildStatus::SUCCESS
   end
 
   private

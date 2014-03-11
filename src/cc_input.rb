@@ -1,13 +1,13 @@
 require 'open-uri'
 
-require_relative 'exceptions/invalid_cc_tray_format'
+require_relative 'exceptions/invalid_cc_tray_format_error'
 require_relative 'exceptions/resource_not_found_error'
-require_relative 'exceptions/invalid_url'
+require_relative 'exceptions/invalid_url_error'
 
 class CCInput
 
   def initialize(url)
-    raise InvalidUrl unless url =~ URI::regexp
+    raise InvalidUrlError unless url =~ URI::regexp
     @url = url
   end
 
@@ -31,7 +31,7 @@ class CCInput
       xml_document = Nokogiri::XML::Document.parse(document)
       errors = schema.validate(xml_document)
 
-      raise InvalidCCTrayFormat unless errors.empty?
+      raise InvalidCCTrayFormatError unless errors.empty?
     end
 
 end

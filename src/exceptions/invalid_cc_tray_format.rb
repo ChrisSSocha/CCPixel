@@ -1,2 +1,0 @@
-class InvalidCCTrayFormat < StandardError
-end

@@ -2,10 +2,16 @@ require_relative 'cc_input'
 require_relative 'cc_parser'
 require_relative 'cc_output'
 require_relative 'cc_pixel'
+require_relative 'cc_config'
 
 begin
 
-  input = CCInput.new("http://localhost:4567")
+  working_directory = Dir.getwd
+  config_file = "#{working_directory}/config.yml"
+
+  config = CCConfig.new(config_file)
+
+  input = CCInput.new(config.getUrl())
   parser = CCParser.new(input)
 
   output = CCOutput.new
@@ -15,7 +21,7 @@ begin
 
     ccPixel.process(parser.getProjects())
 
-    sleep 10
+    sleep config.getSleepTime()
 
   end
 rescue SystemExit, Interrupt
