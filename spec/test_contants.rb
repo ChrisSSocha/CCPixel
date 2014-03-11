@@ -85,13 +85,29 @@ module TestConstants
 
   module YAML
 
-    ValidYAML = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"10"})
+    ValidUrl    = "http:://localhost:4567"
+    InvalidUrl  = "invalid_url"
 
-    InvalidUrl = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"10"})
-    NoUrl = ::YAML.dump({"sleep"=>"10"})
+    ValidSleep    = 10
+    InvalidSleep  = "Not a number"
 
-    InvalidSleep = ::YAML.dump({"url"=>"http:://localhost:4567", "sleep"=>"Not a number"})
-    NoSleep = ::YAML.dump({"url"=>"http:://localhost:4567"})
+    ValidUsername = "user"
+    ValidPassword = "pass"
+
+    AuthHash = {"user" => ValidUsername, "pass" => ValidPassword}
+
+    ValidYAMLNoAuth         = {"url"=>ValidUrl, "sleep"=>ValidSleep}
+
+    InvalidUrlYAML    = {"url"=>InvalidUrl, "sleep"=>ValidSleep}
+    NoUrlYAML         = {"sleep"=>ValidSleep}
+
+    InvalidSleepYAML  = {"url"=>ValidUrl, "sleep"=>InvalidSleep}
+    NoSleepYAML       = {"url"=>ValidUrl}
+
+    ValidYAMLWithAuth = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => AuthHash}
+
+    NoUsernameYAML = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => {"pass" => ValidPassword}}
+    NoPasswordYAML = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => {"user" => ValidUsername}}
 
   end
 

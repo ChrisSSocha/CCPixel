@@ -2,6 +2,7 @@ require 'yaml'
 
 require_relative 'exceptions/no_file_error'
 require_relative 'exceptions/resource_not_found_error'
+require_relative 'exceptions/invalid_auth_format_error'
 
 class CCConfig
 
@@ -25,6 +26,21 @@ class CCConfig
     validateNumeric!(sleepTimer)
 
     return sleepTimer
+  end
+
+  def getAuth
+    auth = @yamlFile['auth']
+
+    begin
+      validateNotNil!(auth)
+    rescue ResourceNotFoundError
+      raise raise InvalidAuthFormatError
+    end
+
+    validateNotNil!(auth['user'])
+    validateNotNil!(auth['pass'])
+
+    return auth
   end
 
   private

@@ -11,7 +11,7 @@ begin
 
   config = CCConfig.new(config_file)
 
-  input = CCInput.new(config.getUrl())
+  input = CCInput.new(config.getUrl(), config.getAuth())
   parser = CCParser.new(input)
 
   output = CCOutput.new

@@ -1,2 +1,5 @@
 url: "http://localhost:4567"
-sleep: 10 
+sleep: 10
+auth:
+  user: "user"
+  pass: "pass" 

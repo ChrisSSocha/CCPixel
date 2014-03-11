@@ -90,7 +90,7 @@ class BlinkStick
 
     opacity = 100
     frame = opacity/frames
-    for i in 0..frames
+    (0..frames).each do
       opacity -= frame
       self.color = start_color.mix_with(end_color, opacity)
       sleep sleep
