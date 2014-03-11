@@ -33,13 +33,13 @@ class CCConfig
       raise ResourceNotFoundError if resource.nil?
     end
 
-  def validateUrl!(url)
-    raise InvalidUrlError unless url =~ URI::regexp
-  end
+    def validateUrl!(url)
+      raise InvalidUrlError unless url =~ URI::regexp
+    end
 
-  def validateNumeric!(number)
-    raise TypeError unless number.is_a? Numeric
-  end
+    def validateNumeric!(number)
+      raise TypeError unless number.is_a? Numeric
+    end
 
     def load(file)
       begin

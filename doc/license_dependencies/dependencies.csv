@@ -1,0 +1,6 @@
+bundler, 1.5.3, MIT
+color, 1.5.1, MIT
+ffi, 1.9.3, BSD
+libusb, 0.4.0, LGPL
+mini_portile, 0.5.2, MIT
+nokogiri, 1.6.1, MIT

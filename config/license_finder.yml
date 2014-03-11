@@ -1,9 +1,10 @@
 ---
 whitelist:
-#- MIT
-#- Apache 2.0
+- MIT
+- LGPL
+- BSD
 ignore_groups:
 - test
 - development
-dependencies_file_dir: './doc/'
+dependencies_file_dir: './doc/license_dependencies'
 project_name: CCPixel
