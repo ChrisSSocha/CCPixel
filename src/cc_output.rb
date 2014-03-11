@@ -27,33 +27,43 @@ class CCOutput
   end
 
   def fail_building
-    run {
-      while @running
-        @blinkStick.fade_to(Color::RED)
-        @blinkStick.fade_to(Color::YELLOW)
-      end
+    run_loop {
+      @blinkStick.fade_to(Color::RED)
+      @blinkStick.fade_to(Color::YELLOW)
     }
   end
 
   def success_building
-    run {
-      while @running
-        @blinkStick.fade_to(Color::GREEN)
-        @blinkStick.fade_to(Color::YELLOW)
-      end
+    run_loop {
+      @blinkStick.fade_to(Color::GREEN)
+      @blinkStick.fade_to(Color::YELLOW)
     }
   end
 
   def off
-    @blinkStick.off
+    run {
+      @blinkStick.off
+    }
+  end
+
+  def off!
+    off()
+    @thread.join()
   end
 
   private
 
+    def run_loop(&block)
+      run {
+        while @running
+          block.yield
+        end
+      }
+    end
+
     def run(&block)
       @running = false
       @thread.join if @thread
-      @thread.exit if @thread
       @running = true
       @thread = Thread.new &block
     end

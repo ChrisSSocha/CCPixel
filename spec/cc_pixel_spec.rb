@@ -8,6 +8,15 @@ describe '.process' do
     @ccPixel = CCPixel.new(@ccOutput)
   end
 
+  context 'when there are no projects' do
+    let(:projects) {[]}
+
+    it 'should call success method' do
+      expect(@ccOutput).to receive(:off)
+      @ccPixel.process(projects)
+    end
+  end
+
   context 'when all builds are successful' do
 
     let(:projects) {[SuccessfulProject, SuccessfulProject]}

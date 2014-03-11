@@ -8,30 +8,24 @@ class CCPixel
 
   def process(projects)
 
-    building = false;
-    failed = false;
-
-    projects.each{|project|
-      if project.isBuilding?
-        building = true
-      end
-
-      unless project.isSuccessful?
-        failed = true
-      end
-    }
-
-    if failed
-      if building
-        @output.fail_building()
-      else
-        @output.fail()
-      end
+    if(projects.empty?)
+      @output.off
     else
-      if building
-        @output.success_building()
+      building = isBuilding?(projects)
+      failed = isFailure?(projects)
+
+      if failed
+        if building
+          @output.fail_building()
+        else
+          @output.fail()
+        end
       else
-        @output.success()
+        if building
+          @output.success_building()
+        else
+          @output.success()
+        end
       end
     end
 
@@ -39,4 +33,25 @@ class CCPixel
 
   private
 
-end
+    def isBuilding?(projects)
+      building = false
+      projects.each{|project|
+        if project.isBuilding?
+          building = true
+        end
+      }
+      return building
+    end
+
+    def isFailure?(projects)
+      failure = false
+      projects.each{|project|
+        unless project.isSuccessful?
+          failure = true
+        end
+      }
+      return failure
+    end
+
+
+  end

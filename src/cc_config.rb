@@ -12,8 +12,8 @@ class CCConfig
   def getUrl
     url = @yamlFile['url']
 
-    raise ResourceNotFoundError if url.nil?
-    raise InvalidUrlError unless url =~ URI::regexp
+    validateNotNil!(url)
+    validateUrl!(url)
 
     return url
   end
@@ -21,13 +21,25 @@ class CCConfig
   def getSleepTime
     sleepTimer = @yamlFile['sleep']
 
-    raise ResourceNotFoundError if sleepTimer.nil?
-    raise TypeError unless sleepTimer.is_a? Numeric
+    validateNotNil!(sleepTimer)
+    validateNumeric!(sleepTimer)
 
     return sleepTimer
   end
 
   private
+
+    def validateNotNil!(resource)
+      raise ResourceNotFoundError if resource.nil?
+    end
+
+  def validateUrl!(url)
+    raise InvalidUrlError unless url =~ URI::regexp
+  end
+
+  def validateNumeric!(number)
+    raise TypeError unless number.is_a? Numeric
+  end
 
     def load(file)
       begin

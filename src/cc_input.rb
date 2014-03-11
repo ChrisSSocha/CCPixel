@@ -14,7 +14,7 @@ class CCInput
   def fetch()
     begin
       document = open(@url).read()
-      validate(document)
+      validate!(document)
     rescue OpenURI::HTTPError => e
       raise ResourceNotFoundError, ["Error trying to fetch resource", e]
     end
@@ -25,7 +25,7 @@ class CCInput
 
   private
 
-    def validate(document)
+    def validate!(document)
       schema = Nokogiri::XML::Schema(File.read("#{File.expand_path("..", __FILE__)}/resources/cctray_schema.xsd"))
 
       xml_document = Nokogiri::XML::Document.parse(document)

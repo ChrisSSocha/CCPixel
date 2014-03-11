@@ -25,5 +25,5 @@ begin
 
   end
 rescue SystemExit, Interrupt
-  output.off()
+  output.off!()
 end
