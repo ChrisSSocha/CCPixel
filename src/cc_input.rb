@@ -6,10 +6,12 @@ require_relative 'exceptions/invalid_url_error'
 
 class CCInput
 
-  def initialize(url, authHash = nil)
+  def initialize(url, username = nil, password = nil)
     raise InvalidUrlError unless url =~ URI::regexp
     @url = url
-    @authHash = authHash
+
+    @username = username
+    @password = password
   end
 
   def fetch()
@@ -26,18 +28,16 @@ class CCInput
 
   private
 
-  def getDocument()
+    def getDocument()
 
-    if @authHash
-      user = @authHash['user']
-      pass = @authHash['pass']
-      document = open(@url, http_basic_authentication: [user, pass])
-    else
-      document = open(@url)
+      if @username && @password
+        document = open(@url, http_basic_authentication: [@username, @password])
+      else
+        document = open(@url)
+      end
+
+      document.read()
     end
-
-    document.read()
-  end
 
     def validate!(document)
       schema = Nokogiri::XML::Schema(File.read("#{File.expand_path("..", __FILE__)}/resources/cctray_schema.xsd"))

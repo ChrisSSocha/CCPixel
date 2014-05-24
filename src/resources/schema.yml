@@ -1,0 +1,23 @@
+type: map
+class: Configuration
+required: true
+mapping:
+  "url":
+    type: str
+    required: true
+  "sleep":
+    type: int
+    required: true
+  "auth":
+    type: map
+    required: true
+    mapping:
+      "enabled":
+        type: bool
+        required: true
+      "username":
+        type: str
+        required: true
+      "password":
+        type: str
+        required: true

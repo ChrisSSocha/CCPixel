@@ -91,24 +91,36 @@ module TestConstants
     ValidSleep    = 10
     InvalidSleep  = "Not a number"
 
-    ValidUsername = "user"
-    ValidPassword = "pass"
+    UseAuth = true
 
-    AuthHash = {"user" => ValidUsername, "pass" => ValidPassword}
+    ValidUsername = "username"
+    ValidPassword = "password"
 
-    ValidYAMLNoAuth         = {"url"=>ValidUrl, "sleep"=>ValidSleep}
+    InvalidYAML = {}
 
-    InvalidUrlYAML    = {"url"=>InvalidUrl, "sleep"=>ValidSleep}
-    NoUrlYAML         = {"sleep"=>ValidSleep}
+    ValidYAML = { "url" => ValidUrl,
+                  "sleep" => ValidSleep,
+                  "auth" => { "enabled" => UseAuth,
+                              "username" => ValidUsername,
+                              "password" => ValidPassword
+                            }
+                }
 
-    InvalidSleepYAML  = {"url"=>ValidUrl, "sleep"=>InvalidSleep}
-    NoSleepYAML       = {"url"=>ValidUrl}
+    InvalidURLYAML = { "url" => InvalidUrl,
+                       "sleep" => ValidSleep,
+                       "auth" => { "enabled" => UseAuth,
+                                   "username" => ValidUsername,
+                                   "password" => ValidPassword
+                                 }
+                     }
 
-    ValidYAMLWithAuth = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => AuthHash}
-
-    NoUsernameYAML = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => {"pass" => ValidPassword}}
-    NoPasswordYAML = {"url"=>ValidUrl, "sleep"=>ValidSleep, "auth" => {"user" => ValidUsername}}
-
+    InvalidSleepYAML = { "url" => ValidUrl,
+                         "sleep" => InvalidSleep,
+                         "auth" => { "enabled" => UseAuth,
+                                     "username" => ValidUsername,
+                                     "password" => ValidPassword
+                                   }
+                       }
   end
 
 end

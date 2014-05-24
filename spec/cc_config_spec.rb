@@ -4,98 +4,57 @@ describe 'Config' do
 
   context 'config file does not exist' do
 
-    let(:invalid_file) {"does_not_exist.yml"}
-
     it 'should throw error' do
-      expect {CCConfig.new(invalid_file)}.to raise_error(NoFileError)
+      expect {Configuration.load_yaml(StringIO.new())}.to raise_error(InvalidConfigFormat)
     end
 
   end
 
   context 'config file exists' do
 
-    let(:valid_file) {"exists.yml"}
-
-    describe 'when getting URL' do
-
-      it 'should throw error when URL not correct format' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::InvalidUrlYAML)
-        config = CCConfig.new(valid_file)
-
-        expect{config.getUrl()}.to raise_error(InvalidUrlError)
-      end
-
-      it 'should throw error if URL does not exist' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoUrlYAML)
-        config = CCConfig.new(valid_file)
-
-        expect{config.getUrl()}.to raise_error(ResourceNotFoundError)
-      end
-
-      it 'should return url' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
-        config = CCConfig.new(valid_file)
-
-        expect(config.getUrl()).to eq(TestConstants::YAML::ValidUrl)
-      end
-
-    end
-
     describe 'when getting sleep' do
 
       it 'should throw error when sleep not correct format' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::InvalidSleepYAML)
-        config = CCConfig.new(valid_file)
-
-        expect{config.getSleepTime()}.to raise_error(TypeError)
-      end
-
-      it 'should throw error if sleep does not exist' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoSleepYAML)
-        config = CCConfig.new(valid_file)
-
-        expect{config.getSleepTime()}.to raise_error(ResourceNotFoundError)
+        file = StringIO.new(TestConstants::YAML::InvalidSleepYAML.to_yaml)
+        expect{Configuration.load_yaml(file)}.to raise_error(InvalidConfigFormat)
       end
 
       it 'should return sleep' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
-        config = CCConfig.new(valid_file)
+        file = StringIO.new(TestConstants::YAML::ValidYAML.to_yaml)
+        config = Configuration.load_yaml(file)
 
         expect(config.getSleepTime()).to eq(TestConstants::YAML::ValidSleep)
       end
 
     end
 
-    describe 'when getting auth' do
+    it 'should return url' do
+      file = StringIO.new(TestConstants::YAML::ValidYAML.to_yaml)
+      config = Configuration.load_yaml(file)
 
-      it 'should return nil if no auth' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
-        config = CCConfig.new(valid_file)
+      expect(config.getUrl()).to eq(TestConstants::YAML::ValidUrl)
+    end
 
-        expect(config.getAuth()).to be_nil
-      end
+    it 'should return useAuth' do
+      file = StringIO.new(TestConstants::YAML::ValidYAML.to_yaml)
 
-      it 'should throw error if no username' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoUsernameYAML)
-        config = CCConfig.new(valid_file)
+      config = Configuration.load_yaml(file)
 
-        expect{config.getAuth()}.to raise_error(ResourceNotFoundError)
-      end
+      expect(config.getSleepTime()).to eq(TestConstants::YAML::ValidSleep)
+    end
 
-      it 'should throw error if no password' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoPasswordYAML)
-        config = CCConfig.new(valid_file)
+    it 'should return username' do
+      file = StringIO.new(TestConstants::YAML::ValidYAML.to_yaml)
+      config = Configuration.load_yaml(file)
 
-        expect{config.getAuth()}.to raise_error(ResourceNotFoundError)
-      end
+      expect(config.getSleepTime()).to eq(TestConstants::YAML::ValidSleep)
+    end
 
-      it 'should return auth hash' do
-        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLWithAuth)
-        config = CCConfig.new(valid_file)
+    it 'should return password' do
+      file = StringIO.new(TestConstants::YAML::ValidYAML.to_yaml)
+      config = Configuration.load_yaml(file)
 
-        expect(config.getAuth()).to eq(TestConstants::YAML::AuthHash)
-      end
-
+      expect(config.getSleepTime()).to eq(TestConstants::YAML::ValidSleep)
     end
 
   end

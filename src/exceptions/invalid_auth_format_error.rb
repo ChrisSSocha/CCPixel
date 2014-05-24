@@ -1,2 +1,0 @@
-class InvalidAuthFormatError < StandardError
-end

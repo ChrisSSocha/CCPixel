@@ -1,0 +1,2 @@
+class InvalidConfigFormat < StandardError
+end

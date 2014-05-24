@@ -22,8 +22,9 @@ Configure `config.yml`:
     url: "http://example.com/cctray.xml"
     sleep: 10
     auth:
-      user: "user"
-      pass: "pass"
+      enabled: true
+      username: "user"
+      password: "pass"
 
 Run the main file:
 
