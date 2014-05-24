@@ -31,10 +31,8 @@ class CCConfig
   def getAuth
     auth = @yamlFile['auth']
 
-    begin
-      validateNotNil!(auth)
-    rescue ResourceNotFoundError
-      raise raise InvalidAuthFormatError
+    if auth.nil?
+      return nil
     end
 
     validateNotNil!(auth['user'])

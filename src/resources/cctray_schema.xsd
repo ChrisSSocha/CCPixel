@@ -5,10 +5,10 @@
       <xs:sequence>
         <xs:element name="Project" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+            <xs:attribute name="name" type="xs:string" use="required" />
             <xs:attribute name="activity" use="required">
               <xs:simpleType>
-                <xs:restriction base="xs:NMTOKEN">
+                <xs:restriction base="xs:token">
                   <xs:enumeration value="Sleeping" />
                   <xs:enumeration value="Building" />
                   <xs:enumeration value="CheckingModifications" />
@@ -17,7 +17,7 @@
             </xs:attribute>
             <xs:attribute name="lastBuildStatus" use="required">
               <xs:simpleType>
-                <xs:restriction base="xs:NMTOKEN">
+                <xs:restriction base="xs:token">
                   <xs:enumeration value="pending"/>
                   <xs:enumeration value="Exception"/>
                   <xs:enumeration value="Success"/>
@@ -26,7 +26,7 @@
                 </xs:restriction>
               </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="lastBuildLabel" type="xs:NMTOKEN" use="required" />
+            <xs:attribute name="lastBuildLabel" type="xs:token" use="required" />
             <xs:attribute name="lastBuildTime" type="xs:dateTime" use="required" />
             <xs:attribute name="nextBuildTime" type="xs:dateTime" use="optional" />
             <xs:attribute name="webUrl" type="xs:string" use="required" />

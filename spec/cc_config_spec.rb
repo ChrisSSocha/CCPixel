@@ -19,21 +19,21 @@ describe 'Config' do
     describe 'when getting URL' do
 
       it 'should throw error when URL not correct format' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::InvalidUrlYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::InvalidUrlYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getUrl()}.to raise_error(InvalidUrlError)
       end
 
       it 'should throw error if URL does not exist' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::NoUrlYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoUrlYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getUrl()}.to raise_error(ResourceNotFoundError)
       end
 
       it 'should return url' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::ValidYAMLNoAuth)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
         config = CCConfig.new(valid_file)
 
         expect(config.getUrl()).to eq(TestConstants::YAML::ValidUrl)
@@ -44,21 +44,21 @@ describe 'Config' do
     describe 'when getting sleep' do
 
       it 'should throw error when sleep not correct format' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::InvalidSleepYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::InvalidSleepYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getSleepTime()}.to raise_error(TypeError)
       end
 
       it 'should throw error if sleep does not exist' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::NoSleepYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoSleepYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getSleepTime()}.to raise_error(ResourceNotFoundError)
       end
 
       it 'should return sleep' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::ValidYAMLNoAuth)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
         config = CCConfig.new(valid_file)
 
         expect(config.getSleepTime()).to eq(TestConstants::YAML::ValidSleep)
@@ -68,29 +68,29 @@ describe 'Config' do
 
     describe 'when getting auth' do
 
-      it 'should throw error if no auth' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::ValidYAMLNoAuth)
+      it 'should return nil if no auth' do
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLNoAuth)
         config = CCConfig.new(valid_file)
 
-        expect{config.getAuth()}.to raise_error(InvalidAuthFormatError)
+        expect(config.getAuth()).to be_nil
       end
 
       it 'should throw error if no username' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::NoUsernameYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoUsernameYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getAuth()}.to raise_error(ResourceNotFoundError)
       end
 
       it 'should throw error if no password' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::NoPasswordYAML)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::NoPasswordYAML)
         config = CCConfig.new(valid_file)
 
         expect{config.getAuth()}.to raise_error(ResourceNotFoundError)
       end
 
       it 'should return auth hash' do
-        allow_any_instance_of(CCConfig).to receive(:load).and_return(TestConstants::YAML::ValidYAMLWithAuth)
+        allow(YAML).to receive(:load_file).and_return(TestConstants::YAML::ValidYAMLWithAuth)
         config = CCConfig.new(valid_file)
 
         expect(config.getAuth()).to eq(TestConstants::YAML::AuthHash)
