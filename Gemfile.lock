@@ -19,6 +19,11 @@ GEM
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
+    rufus-scheduler (3.0.7)
+      tzinfo
+    thread_safe (0.3.3)
+    tzinfo (1.1.0)
+      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
@@ -30,3 +35,4 @@ DEPENDENCIES
   nokogiri
   rake
   rspec
+  rufus-scheduler

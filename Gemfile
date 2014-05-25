@@ -4,6 +4,7 @@ gem 'nokogiri'
 gem 'color'
 gem 'libusb'
 gem 'kwalify'
+gem 'rufus-scheduler'
 
 gem 'rake'
 

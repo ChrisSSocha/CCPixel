@@ -1,0 +1,3 @@
+[submodule "src/ruby/vendor/blinkstick"]
+	path = src/ruby/vendor/blinkstick
+	url = git@github.com:arvydas/blinkstick-ruby.git
