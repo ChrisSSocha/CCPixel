@@ -1,32 +1,55 @@
 bundler,1.5.3,MIT,The best way to manage your application's dependencies,"Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably"
-color,1.5.1,MIT,"Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace manipulation support to applications that require it","Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace
+color,1.6,MIT,"Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace manipulation support to applications that require it","Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace
 manipulation support to applications that require it. It also provides 152
 named RGB colours (184 with spelling variations) that are commonly supported in
 HTML, SVG, and X11 applications. A technique for generating monochromatic
 contrasting palettes is also included.
 
-The capabilities of the Color library are limited to pure mathematical
-manipulation of the colours based on colour theory without reference to colour
-profiles (such as sRGB or Adobe RGB). For most purposes, when working with the
-RGB and HSL colours, this won't matter. However, some colour models (like CIE
-L*a*b*) are not supported because Color does not yet support colour profiles,
-giving no meaningful way to convert colours in absolute colour spaces (like
-L*a*b*, XYZ) to non-absolute colour spaces (like RGB).
+The Color library performs purely mathematical manipulation of the colours
+based on colour theory without reference to colour profiles (such as sRGB or
+Adobe RGB). For most purposes, when working with RGB and HSL colour spaces,
+this won't matter. Absolute colour spaces (like CIE L*a*b* and XYZ) and cannot
+be reliably converted to relative colour spaces (like RGB) without colour
+profiles.
 
-Color version 1.5.1 is mostly a maintenance release, fixing some bugs that may
-have been introduced with the previous release on Ruby 1.8.7. New features
-include an experimental contrast comparison method for RGB colours (found in
-lib/color/rgb/contrast.rb) provided by Dave Heitzman, and methods suggested by
-Thomas Sawyer based on the Spectrum library.
+Color version 1.6 primarily adds a colour matching method for RGB and
+experimental CIE L*a*b* and XYZ conversion methods for use with the colour
+matching method.
 
-Barring bugs introduced in this release, this will be the last version of color
-that supports Ruby 1.8, so make sure that your gem specification is set
-properly, to <tt>~> 1.5</tt> if that matters for your application."
+Barring bugs introduced in this release, this is the last version of color that
+supports Ruby 1.8, so make sure that your gem specification is set properly (to
+<tt>~> 1.6</tt>) if that matters for your application."
 ffi,1.9.3,BSD,Ruby FFI,Ruby FFI library
-libusb,0.4.0,LGPL,Access USB devices from Ruby via libusb-1.0,LIBUSB is a Ruby binding that gives Ruby programmers access to arbitrary USB devices
-mini_portile,0.5.2,MIT,Simplistic port-like solution for developers,Simplistic port-like solution for developers. It provides a standard and simplified way to compile against dependency libraries without messing up your system.
-nokogiri,1.6.1,MIT,"Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser","Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+kwalify,0.7.2,MIT,"a parser, schema validator, and data-binding tool for YAML and JSON.","Kwalify is a parser, schema validator, and data binding tool for YAML and JSON."
+libusb,0.4.1,LGPL,Access USB devices from Ruby via libusb-1.0,LIBUSB is a Ruby binding that gives Ruby programmers access to arbitrary USB devices
+mini_portile,0.6.0,MIT,Simplistic port-like solution for developers,Simplistic port-like solution for developers. It provides a standard and simplified way to compile against dependency libraries without messing up your system.
+nokogiri,1.6.2.1,MIT,"Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser","Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
 many features is the ability to search documents via XPath or CSS3 selectors.
 
-XML is like violence - if it doesnât solve your problems, you are not using
+XML is like violence - if it doesn’t solve your problems, you are not using
 enough of it."
+rake,10.3.2,MIT,Rake is a Make-like program implemented in Ruby,"Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+specified in standard Ruby syntax.
+
+Rake has the following features:
+
+* Rakefiles (rake's version of Makefiles) are completely defined in
+  standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+  syntax to worry about (is that a tab or a space?)
+
+* Users can specify tasks with prerequisites.
+
+* Rake supports rule patterns to synthesize implicit tasks.
+
+* Flexible FileLists that act like arrays but know about manipulating
+  file names and paths.
+
+* A library of prepackaged tasks to make building rakefiles easier. For example,
+  tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+  tasks for building RDoc and Gems were included in rake but they're now
+  available in RDoc and RubyGems respectively.)
+
+* Supports parallel execution of tasks."
+rufus-scheduler,3.0.7,MIT,"job scheduler for Ruby (at, cron, in and every jobs)","job scheduler for Ruby (at, cron, in and every jobs)."
+thread_safe,0.3.3,Apache-2.0,A collection of data structures and utilities to make thread-safe programming in Ruby easier,Thread-safe collections and utilities for Ruby
+tzinfo,1.1.0,MIT,Daylight savings aware timezone library,TZInfo provides daylight savings aware transformations between times in different time zones.

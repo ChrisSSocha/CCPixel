@@ -28,14 +28,14 @@ Configure `config.yml`:
 
 Run the main file:
 
-    $ bundle exec ruby src/cc_runner.rb
+    $ bundle exec rake run
 
 Testing
 -------
 
 To run the tests:
 
-    $ bundle exec rspec
+    $ bundle exec rake test
 
 
 Contributing

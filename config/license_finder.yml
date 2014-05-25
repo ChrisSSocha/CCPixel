@@ -3,6 +3,7 @@ whitelist:
 - MIT
 - LGPL
 - BSD
+- Apache-2.0
 ignore_groups:
 - test
 - development

@@ -1,12 +1,17 @@
 # CCPixel
 
-As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
+As of May 25, 2014  5:08pm. 11 total, _1 unapproved_
 
 ## Summary
-  * 4 MIT
-  * 1 BSD
+  * 8 MIT
   * 1 LGPL
+  * 1 BSD
+  * 1 Apache 2.0
 
+
+1 unapproved dependencies
+
+* <a href='#thread_safe'>thread_safe</a> (Apache-2.0)
 
 
 ## Items
@@ -24,7 +29,7 @@ As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
 
 
 <a name="color"></a>
-### [color](http://color.rubyforge.org) v1.5.1(default)
+### [color](http://color.rubyforge.org) v1.6(default)
 
 | Summary | License | Approved? |
 |---------|-------------|---------|
@@ -37,23 +42,20 @@ As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
 > HTML, SVG, and X11 applications. A technique for generating monochromatic
 > contrasting palettes is also included.
 > 
-> The capabilities of the Color library are limited to pure mathematical
-> manipulation of the colours based on colour theory without reference to colour
-> profiles (such as sRGB or Adobe RGB). For most purposes, when working with the
-> RGB and HSL colours, this won't matter. However, some colour models (like CIE
-> L*a*b*) are not supported because Color does not yet support colour profiles,
-> giving no meaningful way to convert colours in absolute colour spaces (like
-> L*a*b*, XYZ) to non-absolute colour spaces (like RGB).
+> The Color library performs purely mathematical manipulation of the colours
+> based on colour theory without reference to colour profiles (such as sRGB or
+> Adobe RGB). For most purposes, when working with RGB and HSL colour spaces,
+> this won't matter. Absolute colour spaces (like CIE L*a*b* and XYZ) and cannot
+> be reliably converted to relative colour spaces (like RGB) without colour
+> profiles.
 > 
-> Color version 1.5.1 is mostly a maintenance release, fixing some bugs that may
-> have been introduced with the previous release on Ruby 1.8.7. New features
-> include an experimental contrast comparison method for RGB colours (found in
-> lib/color/rgb/contrast.rb) provided by Dave Heitzman, and methods suggested by
-> Thomas Sawyer based on the Spectrum library.
+> Color version 1.6 primarily adds a colour matching method for RGB and
+> experimental CIE L*a*b* and XYZ conversion methods for use with the colour
+> matching method.
 > 
-> Barring bugs introduced in this release, this will be the last version of color
-> that supports Ruby 1.8, so make sure that your gem specification is set
-> properly, to <tt>~> 1.5</tt> if that matters for your application.
+> Barring bugs introduced in this release, this is the last version of color that
+> supports Ruby 1.8, so make sure that your gem specification is set properly (to
+> <tt>~> 1.6</tt>) if that matters for your application.
 
 
 <a name="ffi"></a>
@@ -67,8 +69,20 @@ As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
 > Ruby FFI library
 
 
+<a name="kwalify"></a>
+### [kwalify](http://www.kuwata-lab.com/kwalify/) v0.7.2(default)
+
+| Summary | License | Approved? |
+|---------|-------------|---------|
+|a parser, schema validator, and data-binding tool for YAML and JSON.|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
+
+
+>    Kwalify is a parser, schema validator, and data binding tool for YAML and JSON.
+
+
+
 <a name="libusb"></a>
-### [libusb](http://github.com/larskanis/libusb) v0.4.0(default)
+### [libusb](http://github.com/larskanis/libusb) v0.4.1(default)
 
 | Summary | License | Approved? |
 |---------|-------------|---------|
@@ -79,7 +93,7 @@ As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
 
 
 <a name="mini_portile"></a>
-### [mini_portile](http://github.com/luislavena/mini_portile) v0.5.2
+### [mini_portile](http://github.com/luislavena/mini_portile) v0.6.0
 
 | Summary | License | Approved? |
 |---------|-------------|---------|
@@ -90,16 +104,81 @@ As of March 11, 2014 12:31pm. 6 total, _0 unapproved_
 
 
 <a name="nokogiri"></a>
-### [nokogiri](http://nokogiri.org) v1.6.1(default)
+### [nokogiri](http://nokogiri.org) v1.6.2.1(default)
 
 | Summary | License | Approved? |
 |---------|-------------|---------|
-|Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
+|Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
 
 
-> Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+> Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
 > many features is the ability to search documents via XPath or CSS3 selectors.
 > 
-> XML is like violence - if it doesnât solve your problems, you are not using
+> XML is like violence - if it doesn’t solve your problems, you are not using
 > enough of it.
+
+
+<a name="rake"></a>
+### [rake](https://github.com/jimweirich/rake) v10.3.2(default)
+
+| Summary | License | Approved? |
+|---------|-------------|---------|
+|Rake is a Make-like program implemented in Ruby|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
+
+
+> Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+> specified in standard Ruby syntax.
+> 
+> Rake has the following features:
+> 
+> * Rakefiles (rake's version of Makefiles) are completely defined in
+>   standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+>   syntax to worry about (is that a tab or a space?)
+> 
+> * Users can specify tasks with prerequisites.
+> 
+> * Rake supports rule patterns to synthesize implicit tasks.
+> 
+> * Flexible FileLists that act like arrays but know about manipulating
+>   file names and paths.
+> 
+> * A library of prepackaged tasks to make building rakefiles easier. For example,
+>   tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+>   tasks for building RDoc and Gems were included in rake but they're now
+>   available in RDoc and RubyGems respectively.)
+> 
+> * Supports parallel execution of tasks.
+
+
+<a name="rufus-scheduler"></a>
+### [rufus-scheduler](http://github.com/jmettraux/rufus-scheduler) v3.0.7(default)
+
+| Summary | License | Approved? |
+|---------|-------------|---------|
+|job scheduler for Ruby (at, cron, in and every jobs)|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
+
+
+> job scheduler for Ruby (at, cron, in and every jobs).
+
+
+<a name="thread_safe"></a>
+### [thread_safe](https://github.com/headius/thread_safe) v0.3.3
+
+| Summary | License | Approved? |
+|---------|-------------|---------|
+|A collection of data structures and utilities to make thread-safe programming in Ruby easier|<a href='http://www.apache.org/licenses/LICENSE-2.0.txt'>Apache-2.0</a>| _*No*_ |
+
+
+> Thread-safe collections and utilities for Ruby
+
+
+<a name="tzinfo"></a>
+### [tzinfo](http://tzinfo.github.io) v1.1.0
+
+| Summary | License | Approved? |
+|---------|-------------|---------|
+|Daylight savings aware timezone library|<a href='http://opensource.org/licenses/mit-license'>MIT</a>| Yes |
+
+
+> TZInfo provides daylight savings aware transformations between times in different time zones.
 

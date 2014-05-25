@@ -31,19 +31,33 @@
   <div class="summary hero-unit">
     <h2>Dependencies</h2>
 
-    <p>As of March 11, 2014 12:31pm</p>
+    <p>As of May 25, 2014  5:08pm</p>
 
     <h4>
-      6 total
+      11 total
 
+              <span class="badge badge-important">1 unapproved</span>
           </h4>
 
     <ul>
-              <li>4 MIT</li>
-              <li>1 BSD</li>
+              <li>8 MIT</li>
               <li>1 LGPL</li>
+              <li>1 BSD</li>
+              <li>1 Apache 2.0</li>
           </ul>
   </div>
+      <div class="action-items hero-unit">
+      <h2>Action Items</h2>
+      <h4>1 unapproved dependencies</h4>
+      <ul>
+                  <li>
+          <a href='#thread_safe'>
+            thread_safe
+          </a>
+          (Apache-2.0)
+          </li>
+              </ul>
+    </div>
     <div class="dependencies">
           <div id="bundler" class="approved">
         <h2>
@@ -76,7 +90,7 @@
           <div id="color" class="approved">
         <h2>
                       <a href="http://color.rubyforge.org">color</a>
-                    v1.5.1
+                    v1.6
                       (default)
                   </h2>
         <table class="table table-striped table-bordered">
@@ -96,30 +110,31 @@ named RGB colours (184 with spelling variations) that are commonly supported in
 HTML, SVG, and X11 applications. A technique for generating monochromatic
 contrasting palettes is also included.
 
-The capabilities of the Color library are limited to pure mathematical
-manipulation of the colours based on colour theory without reference to colour
-profiles (such as sRGB or Adobe RGB). For most purposes, when working with the
-RGB and HSL colours, this won't matter. However, some colour models (like CIE
-L*a*b*) are not supported because Color does not yet support colour profiles,
-giving no meaningful way to convert colours in absolute colour spaces (like
-L*a*b*, XYZ) to non-absolute colour spaces (like RGB).
+The Color library performs purely mathematical manipulation of the colours
+based on colour theory without reference to colour profiles (such as sRGB or
+Adobe RGB). For most purposes, when working with RGB and HSL colour spaces,
+this won't matter. Absolute colour spaces (like CIE L*a*b* and XYZ) and cannot
+be reliably converted to relative colour spaces (like RGB) without colour
+profiles.
 
-Color version 1.5.1 is mostly a maintenance release, fixing some bugs that may
-have been introduced with the previous release on Ruby 1.8.7. New features
-include an experimental contrast comparison method for RGB colours (found in
-lib/color/rgb/contrast.rb) provided by Dave Heitzman, and methods suggested by
-Thomas Sawyer based on the Spectrum library.
+Color version 1.6 primarily adds a colour matching method for RGB and
+experimental CIE L*a*b* and XYZ conversion methods for use with the colour
+matching method.
 
-Barring bugs introduced in this release, this will be the last version of color
-that supports Ruby 1.8, so make sure that your gem specification is set
-properly, to <tt>~> 1.5</tt> if that matters for your application.</td>
+Barring bugs introduced in this release, this is the last version of color that
+supports Ruby 1.8, so make sure that your gem specification is set properly (to
+<tt>~> 1.6</tt>) if that matters for your application.</td>
             <td>
                               <a href="http://opensource.org/licenses/mit-license">MIT</a>
                           </td>
           </tr>
           </tbody>
         </table>
-                      </div>
+                          <dl>
+            <dt>Children</dt>
+                          <dd>rake</dd>
+                      </dl>
+              </div>
           <div id="ffi" class="approved">
         <h2>
                       <a href="http://wiki.github.com/ffi/ffi">ffi</a>
@@ -147,11 +162,41 @@ properly, to <tt>~> 1.5</tt> if that matters for your application.</td>
             <dt>Parents</dt>
                           <dd>libusb</dd>
                       </dl>
+                          <dl>
+            <dt>Children</dt>
+                          <dd>rake</dd>
+                      </dl>
+              </div>
+          <div id="kwalify" class="approved">
+        <h2>
+                      <a href="http://www.kuwata-lab.com/kwalify/">kwalify</a>
+                    v0.7.2
+                      (default)
+                  </h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Summary</th>
+            <th>Description</th>
+            <th>License</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>a parser, schema validator, and data-binding tool for YAML and JSON.</td>
+            <td>   Kwalify is a parser, schema validator, and data binding tool for YAML and JSON.
+</td>
+            <td>
+                              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+                          </td>
+          </tr>
+          </tbody>
+        </table>
                       </div>
           <div id="libusb" class="approved">
         <h2>
                       <a href="http://github.com/larskanis/libusb">libusb</a>
-                    v0.4.0
+                    v0.4.1
                       (default)
                   </h2>
         <table class="table table-striped table-bordered">
@@ -181,7 +226,7 @@ properly, to <tt>~> 1.5</tt> if that matters for your application.</td>
           <div id="mini_portile" class="approved">
         <h2>
                       <a href="http://github.com/luislavena/mini_portile">mini_portile</a>
-                    v0.5.2
+                    v0.6.0
                   </h2>
         <table class="table table-striped table-bordered">
           <thead>
@@ -209,7 +254,7 @@ properly, to <tt>~> 1.5</tt> if that matters for your application.</td>
           <div id="nokogiri" class="approved">
         <h2>
                       <a href="http://nokogiri.org">nokogiri</a>
-                    v1.6.1
+                    v1.6.2.1
                       (default)
                   </h2>
         <table class="table table-striped table-bordered">
@@ -222,11 +267,11 @@ properly, to <tt>~> 1.5</tt> if that matters for your application.</td>
           </thead>
           <tbody>
           <tr>
-            <td>Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser</td>
-            <td>Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+            <td>Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser</td>
+            <td>Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
 many features is the ability to search documents via XPath or CSS3 selectors.
 
-XML is like violence - if it doesnât solve your problems, you are not using
+XML is like violence - if it doesn’t solve your problems, you are not using
 enough of it.</td>
             <td>
                               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -237,6 +282,155 @@ enough of it.</td>
                           <dl>
             <dt>Children</dt>
                           <dd>mini_portile</dd>
+                          <dd>rake</dd>
+                      </dl>
+              </div>
+          <div id="rake" class="approved">
+        <h2>
+                      <a href="https://github.com/jimweirich/rake">rake</a>
+                    v10.3.2
+                      (default)
+                  </h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Summary</th>
+            <th>Description</th>
+            <th>License</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Rake is a Make-like program implemented in Ruby</td>
+            <td>Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+specified in standard Ruby syntax.
+
+Rake has the following features:
+
+* Rakefiles (rake's version of Makefiles) are completely defined in
+  standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+  syntax to worry about (is that a tab or a space?)
+
+* Users can specify tasks with prerequisites.
+
+* Rake supports rule patterns to synthesize implicit tasks.
+
+* Flexible FileLists that act like arrays but know about manipulating
+  file names and paths.
+
+* A library of prepackaged tasks to make building rakefiles easier. For example,
+  tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+  tasks for building RDoc and Gems were included in rake but they're now
+  available in RDoc and RubyGems respectively.)
+
+* Supports parallel execution of tasks.</td>
+            <td>
+                              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+                          </td>
+          </tr>
+          </tbody>
+        </table>
+                  <dl>
+            <dt>Parents</dt>
+                          <dd>color</dd>
+                          <dd>ffi</dd>
+                          <dd>nokogiri</dd>
+                          <dd>thread_safe</dd>
+                          <dd>rufus-scheduler</dd>
+                      </dl>
+                      </div>
+          <div id="rufus-scheduler" class="approved">
+        <h2>
+                      <a href="http://github.com/jmettraux/rufus-scheduler">rufus-scheduler</a>
+                    v3.0.7
+                      (default)
+                  </h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Summary</th>
+            <th>Description</th>
+            <th>License</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>job scheduler for Ruby (at, cron, in and every jobs)</td>
+            <td>job scheduler for Ruby (at, cron, in and every jobs).</td>
+            <td>
+                              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+                          </td>
+          </tr>
+          </tbody>
+        </table>
+                          <dl>
+            <dt>Children</dt>
+                          <dd>tzinfo</dd>
+                          <dd>rake</dd>
+                      </dl>
+              </div>
+          <div id="thread_safe" class="unapproved">
+        <h2>
+                      <a href="https://github.com/headius/thread_safe">thread_safe</a>
+                    v0.3.3
+                  </h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Summary</th>
+            <th>Description</th>
+            <th>License</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>A collection of data structures and utilities to make thread-safe programming in Ruby easier</td>
+            <td>Thread-safe collections and utilities for Ruby</td>
+            <td>
+                              <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache-2.0</a>
+                          </td>
+          </tr>
+          </tbody>
+        </table>
+                  <dl>
+            <dt>Parents</dt>
+                          <dd>tzinfo</dd>
+                      </dl>
+                          <dl>
+            <dt>Children</dt>
+                          <dd>rake</dd>
+                      </dl>
+              </div>
+          <div id="tzinfo" class="approved">
+        <h2>
+                      <a href="http://tzinfo.github.io">tzinfo</a>
+                    v1.1.0
+                  </h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Summary</th>
+            <th>Description</th>
+            <th>License</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Daylight savings aware timezone library</td>
+            <td>TZInfo provides daylight savings aware transformations between times in different time zones.</td>
+            <td>
+                              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+                          </td>
+          </tr>
+          </tbody>
+        </table>
+                  <dl>
+            <dt>Parents</dt>
+                          <dd>rufus-scheduler</dd>
+                      </dl>
+                          <dl>
+            <dt>Children</dt>
+                          <dd>thread_safe</dd>
                       </dl>
               </div>
       </div>
