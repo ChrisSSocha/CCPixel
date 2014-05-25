@@ -1,7 +1,7 @@
 require_relative 'vendor/blinkstick'
 require 'color'
 
-class CCOutput
+class BuildMonitor
 
   module Color
     RED = ::Color::RGB.new(20,0,0)
@@ -10,39 +10,39 @@ class CCOutput
   end
 
   def initialize
-    @blinkStick = BlinkStick.new
-    @blinkStick.open()
+    @blink_stick = BlinkStick.new
+    @blink_stick.open
   end
 
   def fail
     run {
-      @blinkStick.fade_to(Color::RED)
+      @blink_stick.fade_to(Color::RED)
     }
   end
 
   def success
     run {
-      @blinkStick.fade_to(Color::GREEN)
+      @blink_stick.fade_to(Color::GREEN)
     }
   end
 
   def fail_building
     run_loop {
-      @blinkStick.fade_to(Color::RED)
-      @blinkStick.fade_to(Color::YELLOW)
+      @blink_stick.fade_to(Color::RED)
+      @blink_stick.fade_to(Color::YELLOW)
     }
   end
 
   def success_building
     run_loop {
-      @blinkStick.fade_to(Color::GREEN)
-      @blinkStick.fade_to(Color::YELLOW)
+      @blink_stick.fade_to(Color::GREEN)
+      @blink_stick.fade_to(Color::YELLOW)
     }
   end
 
   def off
     run {
-      @blinkStick.off
+      @blink_stick.off
     }
   end
 

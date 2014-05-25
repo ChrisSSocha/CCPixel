@@ -1,21 +1,20 @@
 require 'rspec'
 
-require 'test_contants'
+require 'test_constants'
 
 # Model
-require_relative '../src/model/project'
-require_relative '../src/model/configuration'
+require_relative '../src/ruby/model/project'
+require_relative '../src/ruby/model/configuration'
 
 # Logic
-require_relative '../src/cc_parser'
-require_relative '../src/cc_input'
-require_relative '../src/cc_output'
-require_relative '../src/cc_pixel'
-require_relative '../src/cc_config'
+require_relative '../src/ruby/build_monitor'
+require_relative '../src/ruby/build_processor'
+require_relative '../src/ruby/pipeline_web_resource'
+require_relative '../src/ruby/pipeline_xml_parser'
 
 # Exceptions
-require_relative '../src/exceptions/invalid_cc_tray_format_error'
-require_relative '../src/exceptions/resource_not_found_error'
-require_relative '../src/exceptions/invalid_url_error'
-require_relative '../src/exceptions/no_file_error'
-require_relative '../src/exceptions/invalid_config_format'
+require_relative '../src/ruby/exceptions/invalid_cc_tray_format_error'
+require_relative '../src/ruby/exceptions/resource_not_found_error'
+require_relative '../src/ruby/exceptions/invalid_url_error'
+require_relative '../src/ruby/exceptions/no_file_error'
+require_relative '../src/ruby/exceptions/invalid_config_format'

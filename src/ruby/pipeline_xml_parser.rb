@@ -1,14 +1,9 @@
 require 'nokogiri'
 
-class CCParser
+class PipelineXMLParser
 
-  def initialize(ccInput)
-    @ccInput = ccInput
-  end
-
-  def getProjects
-    xml = @ccInput.fetch()
-    parse(xml)
+  def get_projects(xml_document)
+    parse(xml_document)
   end
 
   private
@@ -40,18 +35,18 @@ class CCParser
     def parse_project(project_xml)
       name = project_xml.attr(Constants::NAME_ATTR)
       activity = project_xml.attr(Constants::ACTIVITY_ATTR)
-      lastBuildStatus = project_xml.attr(Constants::LAST_BUILD_STATUS_ATTR)
-      lastBuildLabel = project_xml.attr(Constants::LAST_BUILD_LABEL_ATTR)
-      lastBuildTime = project_xml.attr(Constants::LAST_BUILD_TIME_ATTR)
-      nextBuildTime = project_xml.attr(Constants::NEXT_BUILD_TIME_ATTR)
-      webUrl = project_xml.attr(Constants::WEB_URL_ATTR)
+      last_build_status = project_xml.attr(Constants::LAST_BUILD_STATUS_ATTR)
+      last_build_label = project_xml.attr(Constants::LAST_BUILD_LABEL_ATTR)
+      last_build_time = project_xml.attr(Constants::LAST_BUILD_TIME_ATTR)
+      next_build_time = project_xml.attr(Constants::NEXT_BUILD_TIME_ATTR)
+      web_url = project_xml.attr(Constants::WEB_URL_ATTR)
 
       Project::Builder.new(name, activity)
-                      .lastBuildStatus(lastBuildStatus)
-                      .lastBuildLabel(lastBuildLabel)
-                      .lastBuildTime(lastBuildTime)
-                      .nextBuildTime(nextBuildTime)
-                      .webUrl(webUrl)
+                      .last_build_status(last_build_status)
+                      .last_build_label(last_build_label)
+                      .last_build_time(last_build_time)
+                      .next_build_time(next_build_time)
+                      .web_url(web_url)
                       .build()
     end
 
