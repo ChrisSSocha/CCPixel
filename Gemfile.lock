@@ -10,6 +10,7 @@ GEM
     mini_portile (0.5.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    rake (10.1.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -27,4 +28,5 @@ DEPENDENCIES
   kwalify
   libusb
   nokogiri
+  rake
   rspec

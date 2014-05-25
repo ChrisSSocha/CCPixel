@@ -5,6 +5,8 @@ gem 'color'
 gem 'libusb'
 gem 'kwalify'
 
+gem 'rake'
+
 group :test, :development do
   gem 'rspec'
 end

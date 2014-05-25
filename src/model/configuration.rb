@@ -45,7 +45,7 @@ class Configuration
     end
 
     def self.getParser
-      schemaFile = "#{File.expand_path("..", __FILE__)}/../resources/schema.yml"
+      schemaFile = File.join(File.dirname(__FILE__), '..', 'resources', 'schema.yml')
       schema = Kwalify::Yaml.load_file(schemaFile)
       validator = Kwalify::Validator.new(schema)
 
