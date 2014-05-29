@@ -7,8 +7,6 @@ require_relative 'exceptions/hardware_io_error'
 
 class BuildProcessor
 
-  @@logger = Logger.new(STDOUT)
-
   def initialize(input, parser, output)
     @input = input
     @parser = parser
@@ -21,11 +19,11 @@ class BuildProcessor
       projects = @parser.get_projects(xml_document)
       process(projects)
     rescue ResourceNotFoundError => e
-      @@logger.info('Issue while fetching XML document. Will retry shortly...')
-      @@logger.debug(e.inspect)
+      $LOGGER.info('Issue while fetching XML document. Will retry shortly...')
+      $LOGGER.debug(e.inspect)
     rescue HardwareIOError => e
-      @@logger.info('Issue while communication with hardware IO. Will retry shortly...')
-      @@logger.debug(e.inspect)
+      $LOGGER.info('Issue while communication with hardware IO. Will retry shortly...')
+      $LOGGER.debug(e.inspect)
     end
 
   end

@@ -5,8 +5,6 @@ require_relative '../exceptions/hardware_not_found_error'
 
 class LEDHardware
 
-  @@logger = Logger.new(STDOUT)
-
   def initialize(vendor)
     @device = vendor
 
@@ -46,9 +44,9 @@ class LEDHardware
           block.yield
           break
         rescue LIBUSB::ERROR_IO, LIBUSB::ERROR_PIPE => e
-          @@logger.debug("LIBUSB Error '#{e.inspect}'. Attempt #{attempts} of 5...")
+          $LOGGER.debug("LIBUSB Error '#{e.inspect}'. Attempt #{attempts} of 5...")
           if attempts == 5
-            @@logger.debug("LIBUSB Error '#{e.inspect}'. Retried max number of times")
+            $LOGGER.debug("LIBUSB Error '#{e.inspect}'. Retried max number of times")
             raise HardwareIOError, e.inspect
           end
         end
@@ -59,7 +57,7 @@ class LEDHardware
       begin
         block.yield
       rescue LIBUSB::ERROR_NO_DEVICE, NoMethodError => e
-        @@logger.debug("Problem opening LED Driver: " + e.inspect)
+        $LOGGER.debug("Problem opening LED Driver: " + e.inspect)
         raise HardwareNotFoundError, 'Problem opening LED Driver'
       end
     end
