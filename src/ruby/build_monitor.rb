@@ -1,4 +1,4 @@
-require_relative 'vendor/led'
+require_relative 'vendor/led_hardware'
 require_relative 'vendor/blinkstick/blinkstick'
 
 require 'color'
@@ -8,11 +8,11 @@ class BuildMonitor
   module Color
     RED = ::Color::RGB.new(20,0,0)
     GREEN = ::Color::RGB.new(0,20,0)
-    YELLOW = ::Color::RGB.new(40,40,0)
+    YELLOW = ::Color::RGB.new(20,20,0)
   end
 
   def initialize
-    @led = LED.new(BlinkStick.new)
+    @led = LEDHardware.new(BlinkStick.new)
   end
 
   def fail

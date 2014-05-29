@@ -1,13 +1,13 @@
 require 'open-uri'
 
-require_relative 'exceptions/invalid_cc_tray_format_error'
+require_relative 'exceptions/invalid_ccxml_format_error'
 require_relative 'exceptions/resource_not_found_error'
 require_relative 'exceptions/invalid_url_error'
 
 class PipelineWebResource
 
   def initialize(url, username = nil, password = nil)
-    raise InvalidUrlError unless url =~ URI::regexp
+    raise InvalidUrlError, "invalid url #{url}" unless url =~ URI::regexp
     @url = url
 
     @username = username
@@ -18,7 +18,7 @@ class PipelineWebResource
     begin
       document = getDocument
       validate!(document)
-    rescue OpenURI::HTTPError, Errno::ECONNREFUSED => e
+    rescue OpenURI::HTTPError, Errno::ECONNREFUSED, Errno::ENETUNREACH => e
       raise ResourceNotFoundError, ["Error trying to fetch resource", e]
     end
 
@@ -29,11 +29,14 @@ class PipelineWebResource
   private
 
     def getDocument()
-
-      if @username && @password
-        document = open(@url, http_basic_authentication: [@username, @password])
-      else
-        document = open(@url)
+      begin
+        if @username && @password
+          document = open(@url, http_basic_authentication: [@username, @password])
+        else
+          document = open(@url)
+        end
+      rescue => e
+        raise InvalidUrlError e.inspect
       end
 
       document.read
@@ -46,7 +49,7 @@ class PipelineWebResource
       xml_document = Nokogiri::XML::Document.parse(document)
       errors = schema.validate(xml_document)
 
-      raise InvalidCCTrayFormatError unless errors.empty?
+      raise InvalidCCXMLFormatError unless errors.empty?
     end
 
 end

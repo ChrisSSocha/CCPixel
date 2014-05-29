@@ -1,0 +1,2 @@
+class InvalidCCXMLFormatError < StandardError
+end

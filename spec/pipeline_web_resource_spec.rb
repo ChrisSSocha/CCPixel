@@ -14,13 +14,13 @@ describe 'PipelineWebResource' do
 
     it 'should throw exception if url does not exist' do
       input = PipelineWebResource.new(valid_url)
-      expect{input.fetch}.to raise_error(InvalidCCTrayFormatError)
+      expect{input.fetch}.to raise_error(InvalidCCXMLFormatError)
     end
 
     it 'should throw exception if document is not correct format' do
       ccInput = PipelineWebResource.new(valid_url)
       allow(ccInput).to receive(:open).and_return(StringIO.new)
-      expect{ccInput.fetch}.to raise_error(InvalidCCTrayFormatError)
+      expect{ccInput.fetch}.to raise_error(InvalidCCXMLFormatError)
     end
 
     it 'should return xml string' do

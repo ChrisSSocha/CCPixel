@@ -13,7 +13,7 @@ require_relative '../src/ruby/pipeline_web_resource'
 require_relative '../src/ruby/pipeline_xml_parser'
 
 # Exceptions
-require_relative '../src/ruby/exceptions/invalid_cc_tray_format_error'
+require_relative '../src/ruby/exceptions/invalid_ccxml_format_error'
 require_relative '../src/ruby/exceptions/resource_not_found_error'
 require_relative '../src/ruby/exceptions/invalid_url_error'
 require_relative '../src/ruby/exceptions/no_file_error'

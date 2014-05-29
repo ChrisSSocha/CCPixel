@@ -1,0 +1,2 @@
+class HardwareNotFoundError < StandardError
+end
