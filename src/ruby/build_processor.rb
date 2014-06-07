@@ -1,5 +1,4 @@
-require 'logger'
-
+require_relative 'utils/logger'
 require_relative 'model/project'
 require_relative 'pipeline_web_resource'
 require_relative 'pipeline_xml_parser'
@@ -13,17 +12,17 @@ class BuildProcessor
     @output = output
   end
 
-  def run()
+  def run
     begin
       xml_document = @input.fetch
       projects = @parser.get_projects(xml_document)
       process(projects)
     rescue ResourceNotFoundError => e
-      $LOGGER.info('Issue while fetching XML document. Will retry shortly...')
-      $LOGGER.debug(e.inspect)
+      $logger.info('Issue while fetching XML document. Will retry shortly...')
+      $logger.debug(e.inspect)
     rescue HardwareIOError => e
-      $LOGGER.info('Issue while communication with hardware IO. Will retry shortly...')
-      $LOGGER.debug(e.inspect)
+      $logger.info('Issue while communication with hardware IO. Will retry shortly...')
+      $logger.debug(e.inspect)
     end
 
   end
@@ -57,21 +56,21 @@ class BuildProcessor
 
     def is_building?(projects)
       building = false
-      projects.each{|project|
+      projects.each do |project|
         if project.is_building?
           building = true
         end
-      }
+      end
       return building
     end
 
     def is_failure?(projects)
       failure = false
-      projects.each{|project|
+      projects.each do |project|
         unless project.is_successful?
           failure = true
         end
-      }
+      end
       return failure
     end
 

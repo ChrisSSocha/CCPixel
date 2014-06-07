@@ -14,12 +14,12 @@ class PipelineWebResource
     @password = password
   end
 
-  def fetch()
+  def fetch
     begin
-      document = getDocument
+      document = get_document
       validate!(document)
     rescue OpenURI::HTTPError, Errno::ECONNREFUSED, Errno::ENETUNREACH => e
-      raise ResourceNotFoundError, ["Error trying to fetch resource", e]
+      raise ResourceNotFoundError, ['Error trying to fetch resource', e]
     end
 
     document
@@ -28,7 +28,7 @@ class PipelineWebResource
 
   private
 
-    def getDocument()
+    def get_document
       begin
         if @username && @password
           document = open(@url, http_basic_authentication: [@username, @password])
@@ -36,7 +36,7 @@ class PipelineWebResource
           document = open(@url)
         end
       rescue => e
-        raise InvalidUrlError e.inspect
+        raise InvalidUrlError, e.inspect
       end
 
       document.read

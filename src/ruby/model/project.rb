@@ -4,17 +4,17 @@ class Project
 
   module Constants
     module Activity
-      SLEEPING = "Sleeping"
-      BUILDING = "Building"
-      CHECKING_MODIFICATIONS = "CheckingModifications"
+      SLEEPING = 'Sleeping'
+      BUILDING = 'Building'
+      CHECKING_MODIFICATIONS = 'CheckingModifications'
     end
 
     module LastBuildStatus
-      PENDING = "Pending"
-      SUCCESS = "Success"
-      FAILURE = "Failure"
-      EXCEPTION = "Exception"
-      UNKNOWN = "Unknown"
+      PENDING = 'Pending'
+      SUCCESS = 'Success'
+      FAILURE = 'Failure'
+      EXCEPTION = 'Exception'
+      UNKNOWN = 'Unknown'
     end
   end
 

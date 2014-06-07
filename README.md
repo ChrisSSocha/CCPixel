@@ -1,7 +1,7 @@
 CCPixel
 =======
 
-CCPixel is a CCTray driver for [BlinkStick](http://blinkstick.com/)
+CCPixel is a `cc.xml` (build monitor) driver for [BlinkStick](http://blinkstick.com/)
 
 Installation
 ------------
@@ -13,6 +13,8 @@ Install `Bundler`:
 Install all of the required gems:
 
     $ bundle install
+
+Note: We use a `libusb` ruby binding, that has some prerequisites. Please see [documentation](https://github.com/larskanis/libusb#prerequisites)
 
 Usage
 -----
@@ -29,6 +31,12 @@ Configure `config.yml`:
 Run the main file:
 
     $ bundle exec rake run
+    
+TODO
+-------
+
+* Add option to only monitor certain pipelines to `config.yml`
+* Better testing of Error scenarios
 
 Testing
 -------

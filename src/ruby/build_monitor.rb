@@ -1,7 +1,6 @@
-require_relative 'vendor/led_hardware'
-require_relative 'vendor/blinkstick/blinkstick'
-
 require 'color'
+
+require_relative 'vendor/blinkstick'
 
 class BuildMonitor
 
@@ -12,54 +11,54 @@ class BuildMonitor
   end
 
   def initialize
-    @led = LEDHardware.new(BlinkStick.new)
+    @blinkstick = BlinkStick.new
   end
 
   def fail
-    run {
-      @led.fade_to(Color::RED)
-    }
+    run do
+      @blinkstick.fade_to(Color::RED)
+    end
   end
 
   def success
-    run {
-      @led.fade_to(Color::GREEN)
-    }
+    run do
+      @blinkstick.fade_to(Color::GREEN)
+    end
   end
 
   def fail_building
-    run_loop {
-      @led.fade_to(Color::RED)
-      @led.fade_to(Color::YELLOW)
-    }
+    run_loop do
+      @blinkstick.fade_to(Color::RED)
+      @blinkstick.fade_to(Color::YELLOW)
+    end
   end
 
   def success_building
-    run_loop {
-      @led.fade_to(Color::GREEN)
-      @led.fade_to(Color::YELLOW)
-    }
+    run_loop do
+      @blinkstick.fade_to(Color::GREEN)
+      @blinkstick.fade_to(Color::YELLOW)
+    end
   end
 
   def off
-    run {
-      @led.off
-    }
+    run do
+      @blinkstick.off
+    end
   end
 
   def off!
-    off()
-    @thread.join()
+    off
+    @thread.join
   end
 
   private
 
     def run_loop(&block)
-      run {
+      run do
         while @running
           block.yield
         end
-      }
+      end
     end
 
     def run(&block)

@@ -9,14 +9,14 @@ class PipelineXMLParser
   private
 
     module Constants
-      PROJECT_XPATH = "//Project"
-      NAME_ATTR = "name"
-      ACTIVITY_ATTR = "activity"
-      LAST_BUILD_STATUS_ATTR = "lastBuildStatus"
-      LAST_BUILD_LABEL_ATTR = "lastBuildLabel"
-      LAST_BUILD_TIME_ATTR = "lastBuildTime"
-      NEXT_BUILD_TIME_ATTR = "nextBuildTime"
-      WEB_URL_ATTR = "webUrl"
+      PROJECT_XPATH = '//Project'
+      NAME_ATTR = 'name'
+      ACTIVITY_ATTR = 'activity'
+      LAST_BUILD_STATUS_ATTR = 'lastBuildStatus'
+      LAST_BUILD_LABEL_ATTR = 'lastBuildLabel'
+      LAST_BUILD_TIME_ATTR = 'lastBuildTime'
+      NEXT_BUILD_TIME_ATTR = 'nextBuildTime'
+      WEB_URL_ATTR = 'webUrl'
     end
 
     def parse(xml)
