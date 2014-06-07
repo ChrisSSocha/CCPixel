@@ -29,16 +29,11 @@ class PipelineWebResource
   private
 
     def get_document
-      begin
-        if @username && @password
-          document = open(@url, http_basic_authentication: [@username, @password])
-        else
-          document = open(@url)
-        end
-      rescue => e
-        raise InvalidUrlError, e.inspect
+      if @username && @password
+        document = open(@url, http_basic_authentication: [@username, @password])
+      else
+        document = open(@url)
       end
-
       document.read
     end
 
